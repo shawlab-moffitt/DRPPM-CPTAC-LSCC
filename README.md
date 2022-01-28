@@ -85,3 +85,15 @@ db_namemap_file <- '~/R/DRPPM-EASY-LargeProject-main/CCLE-data/CCLE_NameMap.tsv'
 
 ## Sample Selection
 
+![alt text](https://github.com/shawlab-moffitt/DRPPM-EASY-LargeProject-Integration/blob/main/App_Demo_Pictures/EASY_DB_INT_selectdata.PNG?raw=true)
+
+1. This section to subset expression data will only show if the user includes a meta selector file that is able to subset the expression data based on a variable
+   * In the case of the CCLE example the user may select to subset the expression data based on lineage or disease type
+2. The condition selection designated which meta group to group the expression data with
+3. The user may choose to log2 transform the expression data
+4. The label is automatically filled with the Project Name given in the script but is able to be adjusted here
+5. Once the user finishes selecting the preferred data, the "Load/Update Selected Data" button may be pressed for the data sets to be loaded into the program
+6. The data will appear on the screan and the user has to ability to download the selected data individually
+7. The Sample Name Guide is an optional table that will appear when one is given to the program. It may be useful if samples might have multiple names or other information about the sample.
+
+The corresponding tabs are identical to the original DRPPM EASY app and more information about the features can be found [here](https://github.com/shawlab-moffitt/DRPPM-EASY-ExprAnalysisShinY).
