@@ -27,7 +27,7 @@ invisible(lapply(bioCpacks, library, character.only = TRUE))
 ##--Project Name--##
 ProjectName <- "CCLE"
 
-##--Database Files--##
+##--Large Project Files--##
 #Meta
 db_meta_file <- '~/R/DRPPM-EASY-LargeProject-main/CCLE-data/CCLE_meta_melt.zip'
 #Meta Selector File
@@ -587,7 +587,7 @@ ui <-
 server <- function(input, output, session) {
     
     
-    ####----Sample Selection and CCLE Data Initialization----####
+    ####----Sample Selection and Data Initialization----####
     
     
     output$subexprLabel <- renderUI({
@@ -825,7 +825,7 @@ server <- function(input, output, session) {
             firstChoice <- input$firstChoice
             phenoChoice <- input$phenoChoice
             exprChoice <- gsub("_Choices","",input$SelecExpr)
-            paste("CLNameMap_",gsub(" ","",firstChoice),"_",phenoChoice,".tsv", sep = "")
+            paste(ProjectName,"NameMap_",gsub(" ","",firstChoice),"_",phenoChoice,".tsv", sep = "")
         },
         content = function(file) {
             namemap <- db_namemap
@@ -853,7 +853,7 @@ server <- function(input, output, session) {
             firstChoice <- input$firstChoice
             phenoChoice <- input$phenoChoice
             exprChoice <- gsub("_Choices","",input$SelecExpr)
-            paste("meta_CPTAC_LSCC_",phenoChoice,".tsv",sep = "")
+            paste("meta_",ProjectName,"_",phenoChoice,".tsv",sep = "")
         },
         content = function(file) {
             
@@ -862,31 +862,31 @@ server <- function(input, output, session) {
             phenoChoice <- input$phenoChoice
             exprChoice <- gsub("_Choices","",input$SelecExpr)
             
-            if (is.null(ccle_meta_selec) == F) {
+            if (is.null(db_meta_selec) == F) {
                 
                 #get samples selected based on lineage choice
                 samp_selec <- meta_subsetters[which(meta_subsetters[,2] == exprChoice & meta_subsetters[,3] == firstChoice),1]
                 #subset phenotype data based on selected phenotype
-                ccle_pheno.u <- meta_phenos[which(meta_phenos[,2] == phenoChoice),]
+                db_pheno.u <- meta_phenos[which(meta_phenos[,2] == phenoChoice),]
                 #use samples selected to subset again phenotype meta
-                ccle_meta.u <- ccle_pheno.u[which(ccle_pheno.u[,1] %in% samp_selec),]
+                db_meta.u <- db_pheno.u[which(db_pheno.u[,1] %in% samp_selec),]
                 #reformat to proper meta table
-                ccle_meta.u2 <- ccle_meta.u[,c(1,3)]
-                colnames(ccle_meta.u2)[2] <- "Type"
-                ccle_meta_sub <- ccle_meta.u2
+                db_meta.u2 <- db_meta.u[,c(1,3)]
+                colnames(db_meta.u2)[2] <- "Type"
+                db_meta_sub <- db_meta.u2
                 
             }
-            if (is.null(ccle_meta_selec) == T) {
+            if (is.null(db_meta_selec) == T) {
                 
                 #subset phenotype data based on selected phenotype
-                ccle_pheno.u <- meta_phenos[which(meta_phenos[,2] == phenoChoice),]
+                db_pheno.u <- meta_phenos[which(meta_phenos[,2] == phenoChoice),]
                 #reformat to proper meta table
-                ccle_meta.u2 <- ccle_pheno.u[,c(1,3)]
-                colnames(ccle_meta.u2)[2] <- "Type"
-                ccle_meta_sub <- ccle_meta.u2
+                db_meta.u2 <- db_pheno.u[,c(1,3)]
+                colnames(db_meta.u2)[2] <- "Type"
+                db_meta_sub <- db_meta.u2
                 
             }
-            write_tsv(ccle_meta_sub,file)
+            write_tsv(db_meta_sub,file)
         }
     )
     
@@ -895,7 +895,7 @@ server <- function(input, output, session) {
             
             firstChoice <- input$firstChoice
             phenoChoice <- input$phenoChoice
-            paste("expr_CPTAC_LSCC_",phenoChoice,".tsv",sep = "")
+            paste("expr_",ProjectName,"_",phenoChoice,".tsv",sep = "")
         },
         content = function(file) {
             
@@ -904,37 +904,37 @@ server <- function(input, output, session) {
             phenoChoice <- input$phenoChoice
             exprChoice <- gsub("_Choices","",input$SelecExpr)
             
-            if (is.null(ccle_meta_selec) == F) {
+            if (is.null(db_meta_selec) == F) {
                 
                 #get samples selected based on lineage choice
                 samp_selec <- meta_subsetters[which(meta_subsetters[,2] == exprChoice & meta_subsetters[,3] == firstChoice),1]
                 #subset phenotype data based on selected phenotype
-                ccle_pheno.u <- meta_phenos[which(meta_phenos[,2] == phenoChoice),]
+                db_pheno.u <- meta_phenos[which(meta_phenos[,2] == phenoChoice),]
                 #use samples selected to subset again phenotype meta
-                ccle_meta.u <- ccle_pheno.u[which(ccle_pheno.u[,1] %in% samp_selec),]
+                db_meta.u <- db_pheno.u[which(db_pheno.u[,1] %in% samp_selec),]
                 #reformat to proper meta table
-                ccle_meta.u2 <- ccle_meta.u[,c(1,3)]
-                colnames(ccle_meta.u2)[2] <- "Type"
-                ccle_meta_sub <- ccle_meta.u2
+                db_meta.u2 <- db_meta.u[,c(1,3)]
+                colnames(db_meta.u2)[2] <- "Type"
+                db_meta_sub <- db_meta.u2
                 
             }
-            if (is.null(ccle_meta_selec) == T) {
+            if (is.null(db_meta_selec) == T) {
                 
                 #subset phenotype data based on selected phenotype
-                ccle_pheno.u <- meta_phenos[which(meta_phenos[,2] == phenoChoice),]
+                db_pheno.u <- meta_phenos[which(meta_phenos[,2] == phenoChoice),]
                 #reformat to proper meta table
-                ccle_meta.u2 <- ccle_pheno.u[,c(1,3)]
-                colnames(ccle_meta.u2)[2] <- "Type"
-                ccle_meta_sub <- ccle_meta.u2
+                db_meta.u2 <- db_pheno.u[,c(1,3)]
+                colnames(db_meta.u2)[2] <- "Type"
+                db_meta_sub <- db_meta.u2
                 
             }
             
-            samp_selec <- unlist(ccle_meta_sub[,1])
-            ccle_expr_sub <- ccle_expr[,which(colnames(ccle_expr) %in% samp_selec), drop = F]
-            ccle_expr_sub$gene <- rownames(ccle_expr_sub)
-            ccle_expr_sub <- ccle_expr_sub %>%
+            samp_selec <- unlist(db_meta_sub[,1])
+            db_meta_sub <- db_expr[,which(colnames(db_expr) %in% samp_selec), drop = F]
+            db_meta_sub$gene <- rownames(db_meta_sub)
+            db_meta_sub <- db_meta_sub %>%
                 relocate(gene)
-            write_tsv(ccle_expr_sub,file)
+            write_tsv(db_meta_sub,file)
             
         }
     )
