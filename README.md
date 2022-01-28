@@ -5,6 +5,7 @@
 This is an extention of the [DRPPM Expression Analysis ShinY (EASY) App](https://github.com/shawlab-moffitt/DRPPM-EASY-ExprAnalysisShinY) which allows the user to analyze expression data for a given project and in this use case the user is able to upload data from large project databases and within the app the user may select a subst or condition of interest to further analyze. In the demonstration apps featured users may perform further analysis of the [Cancer Cell Line Encyclopedia (CCLE)](https://sites.broadinstitute.org/ccle/) and a [Lung Squamous Cell Carcinoma](https://www.sciencedirect.com/science/article/pii/S0092867421008576?via%3Dihub) study from Clinical Proteomic Tumor Analysis Consortium (CPTAC). Aside from the sample selection page, the downstream analysis is identical to the original EASY app where it allows the user to perform unsupervised clustering, custom differential gene expression and gene set enrichment analysis on the data selected. While this GitHub page can be cloned and ran locally there are current versions of the CCLE app and CPTAC app found at the links below.
 
 CCLE: http://shawlab.science/shiny/DRPPM_EASY_LargeProject_CCLE/
+
 CPTAC_LSCC: http://shawlab.science/shiny/DRPPM_EASY_LargeProject_CPTAC/
 
 # Installation
