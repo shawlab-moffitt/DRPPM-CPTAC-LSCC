@@ -825,7 +825,7 @@ server <- function(input, output, session) {
             firstChoice <- input$firstChoice
             phenoChoice <- input$phenoChoice
             exprChoice <- gsub("_Choices","",input$SelecExpr)
-            paste(ProjectName,"NameMap_",gsub(" ","",firstChoice),"_",phenoChoice,".tsv", sep = "")
+            paste(ProjectName,"_NameMap_",gsub(" ","",firstChoice),"_",phenoChoice,".tsv", sep = "")
         },
         content = function(file) {
             namemap <- db_namemap
