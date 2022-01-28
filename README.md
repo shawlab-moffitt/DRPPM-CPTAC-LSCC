@@ -85,7 +85,7 @@ db_namemap_file <- '~/R/DRPPM-EASY-LargeProject-main/CCLE-data/CCLE_NameMap.tsv'
 
 ## Sample Selection
 
-![alt text](https://github.com/shawlab-moffitt/DRPPM-EASY-LargeProject-Integration/blob/main/App_Demo_Pictures/EASY_DB_INT_selectdata.PNG?raw=true)
+![alt text](https://github.com/shawlab-moffitt/DRPPM-EASY-LargeProject/blob/main/AppDemo_Pictures/DRPPM_EASY_SampleSelection.png?raw=true)
 
 1. This section to subset expression data will only show if the user includes a meta selector file that is able to subset the expression data based on a variable
    * In the case of the CCLE example the user may select to subset the expression data based on lineage or disease type
