@@ -41,22 +41,22 @@ db_namemap_file <- 'CCLE_data/CCLE_NameMap.tsv'
 #write in the name of your gene set list for shiny UI
 userGSlist_name <- 'CellMarker Gene Sets'
 #path to your gene set file .gmt or .txt/.tsv
-userGS_file <- 'CellMarker_gsNsym_HS.tsv'
+userGS_file <- 'GeneSet_data/CellMarker_gsNsym_HS.tsv'
 #Does gene set file have header?
 header.gs <- TRUE
 #path to your R data list object for ssGSEA
-userRData_file <- 'CellMarker_GS_HS.RData'
+userRData_file <- 'GeneSet_data/CellMarker_GS_HS.RData'
 
 
 
 ####----Backend Data Input----####
 
 #MSigDB gene set
-msigdb <- 'msigdb_gsNsym_HS.zip'
+msigdb <- 'GeneSet_data/msigdb_gsNsym_HS.zip'
 #MSigDB gene set FOR UI
-msigdb2 <- 'msigdb_gsNcat_HS.tsv'
+msigdb2 <- 'GeneSet_data/msigdb_gsNcat_HS.tsv'
 #gene set list for ssGSEA
-load('msigdb_gs_HS.RData')
+load('GeneSet_data/msigdb_gs_HS.RData')
 #Cytokine genes for human
 CTKgenes <- c("IL2","IL12A","IL12B","IL17A","IFNA1","IFNB1","IFNG","IFNGR","CD11b",
               "ITGAM","CD33","ENTPD1","ICOSLG","CD275","CD278","TNFSF9","TNFRSF9",
@@ -782,14 +782,14 @@ server <- function(input, output, session) {
     output$metadatalabel <- renderUI({
         
         req(input$updateMETA)
-        h4("Sample Name Guide")
+        h4("Meta Data")
         
     })
     
     output$exprdatalabel <- renderUI({
         
         req(input$updateMETA)
-        h4("Sample Name Guide")
+        h4("Expression Data")
         
     })
     
